@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="header">
+        
+        </header>
+
+        <!-- 
+            Адаптивне меню:
+
+            1. На мобільному dropdown ( onClick );
+
+            2. На мобільному варто приховувати зображення для зменшення контенту ( якщо буде можливість взагалі не завантажувати картинку ).
+
+            3. Desktop view має відображати розширену версію контенту ( включно із зображеннями )
+                Внутрішні меню також містять dropdown ( із вкладенними посиланнями )
+                Відбуваєтсья перенесення списків при досягненів нижньої межі границі вікна.
+
+                Клік по посиланню відкриває вкладене меню ( якщо воно є ):
+                    -- Потрібно уточнити чи клік має відбуватися саме по посиланні.
+                    -- При кліку на посиланні відбуваєтсья розгортання меню, і посилання стає активним ( можна перейти по посиланні )
+                       проте виникає питання, як згорнути дане підменню? 
+                       Одним із рішень пропоную зробити клікабельним не саме посилання, а svg елемент ( стрілку ), щоб зберегти можоивітсь
+                       переходу по посиланні, а також можливість згортання / розгортання меню.
+
+                Поява контекстної панелі: 
+                    -- Кращим варіантом буде робити на onClick, щоб не виникало проблем із втратою цілі ( елемента меню, на якому відбувається ховер)
+                       Якщо ж необхідно саме на ховер, тоді є варіант із дублюванням контенту ( із середини пункту меню контент дублюється у панелі що буде 
+                       з'являтися при наведені )
+
+            4. Варіант: 
+                Зробити секцію із боковим меню на всю ширину екрану, де зліва буде відображатися саме меню, а справа ( по ховеру ) - буде появлятися плашка 
+                із вкладеними менюшками.
+                При цьому на body варто додавати додатково клас, для затемнення фону ( під час виконання ховеру )
+         -->
+        
+        <main class="main">
+            <div class="container">
+                <div class="list-nav-wrapper">
+                    <ul class="list-nav">
+                        <li>
+                            <a class="js-popup" href="#login">Login</a>
+                        </li>
+                        <li>
+                            <a class="js-popup" href="#register">Register</a>
+                        </li>
+                        <li>
+                            <a class="js-popup" href="#restore">Restore password</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>       
+       
+            <div class="container">
+
+            <!-- Form authorization -->
+            <div class="row">
+                <form action="" class="form">
+                            
+                <div class="form-social">
+                    <div class="form__title">
+                        Login
+                    </div>
+    
+                    <div class="form-social__title">
+                        Choose social to login
+                    </div>
+
+                    <ul class="form-social-list">
+                        <li>
+                            <a href="" aria-label="Facebok">
+                                Facebook
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" aria-label="Instagram">
+                                Instagram
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" aria-label="LinkedIn">
+                                LinkedIn
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" aria-label="Google">
+                                Google
+                            </a>
+                        </li>
+
+                    </ul>
+                 
+                </div>
+
+                <div class="form-content">
+                    <div class="input-wrapper">
+                        <input type="text" class="input" placeholder="Enter name" required>
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="password" class="input" placeholder="Enter your password" required>
+                    </div>
+
+                    <button class="btn" type="submit">Login</button>
+                </div>
+
+
+                <p class="form-info">
+                    <a href="#">
+                        Forgot your password?
+                        <span class="icon icon-circle-right"></span>
+                    </a>
+                </p>
+                </form>
+            </div>
+
+            <!-- Form restore password -->
+            <div class="row">
+                <form action="" class="form form-row">
+                    <div class="form__title">
+                        Restore your password
+                    </div>
+
+                    <div class="form-content">
+                        <div class="input-wrapper">
+                            <input type="email" class="input" placeholder="Enter your email" required>
+                        </div>
+                        <button class="btn" type="submit">
+                            Send
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Registration form -->
+            <div class="row">
+                <form action="" class="form form-multirow">
+                    <div class="form__title">
+                        Registration form
+                    </div>
+                    <div class="form-content">
+                        <div class="input-wrapper has-error">
+                            <input type="text" name="name" id="user-name" class="input" required placeholder="Enter your first name">
+                            <p class="error-info">
+                                Lorem ipsum dolor sit.
+                            </p>
+                        </div>
+
+                        <div class="input-wrapper">
+                            <input type="text" name="surename" id="user-surename" class="input" placeholder="Enter your second name">
+                        </div>
+
+                        <div class="input-wrapper input-wrapper-half">
+                            <input type="email" class="input" placeholder="Enter your email" required>
+                        </div>
+
+                        <div class="input-wrapper input-wrapper-half">
+                            <input type="tel" class="input" placeholder="Enter your phone">
+                        </div>
+
+                        <div class="input-wrapper">
+                            <span class="input-wrapper__icon icon icon-eye-blocked js-toggle-password"></span>
+                            <input type="password" class="input" placeholder="Enter your password">
+                        </div>
+
+                        <div class="input-wrapper">
+                            <span class="input-wrapper__icon icon icon-eye-blocked js-toggle-password"></span>
+                            <input type="password" class="input" placeholder="Repeat your password">
+                        </div>
+                    
+                        <button class="btn" type="submit">
+                            Register
+                        </button>
+
+                    </div>
+                    
+
+                    <p class="form-info">
+                        <a href="">
+                            You already have an account?
+                            <span class="icon icon-circle-right"></span>
+                        </a>
+                    </p>
+                </form>
+            </div>
+
+            <!-- Form Feedback Info -->
+            <div class="row">
+                <div class="form-feedback">
+                    <div class="form-feedback__icon">
+                        <span class="icon icon-checkmark"></span>
+                    </div>
+                    <div class="form-feedback__title">
+                        Perfecto!
+                    </div>
+                    <div class="form-feedback__text">
+                        We send a letter to your mailbox with all info. 
+                    </div>
+                    <div class="form-feedback__btn">
+                        <a href="/" class="btn">Home page</a>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+
+
+            <!-- Modal Form Authorization -->
+            <div id="login" class="modal">
+                <div class="modal-content">
+                    <form action="" class="form">
+               
+                        <div class="form-social">
+                            <div class="form-social__title">
+                                Choose social to login
+                            </div>
+                            <ul class="form-social-list">
+                                <li>
+                                    <a href="" aria-label="Facebok">
+                                        Facebook
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="" aria-label="Instagram">
+                                        Instagram
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="" aria-label="LinkedIn">
+                                        LinkedIn
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" aria-label="Google">
+                                        Google
+                                    </a>
+                                </li>
+        
+                            </ul>
+                        </div>
+        
+                        <div class="form__title">
+                            Login
+                        </div>
+        
+                        <div class="form-content">
+                            <div class="input-wrapper">
+                                <input type="text" class="input" placeholder="Enter name" required>
+                            </div>
+                            <div class="input-wrapper">
+                                <input type="password" class="input" placeholder="Enter your password" required>
+                            </div>
+            
+                            <button class="btn" type="submit">Login</button>
+                        </div>
+                        
+        
+                        <p class="form-info">
+                            <a href="#">
+                                Forgot your password?
+                            </a>
+                        </p>
+                    </form>
+        
+                </div>
+            </div>
+
+            <!-- Modal Form Restore Password -->
+            <div id="restore" class="modal">
+                <div class="modal-content">
+                    <form action="" class="form form-row">
+                        <div class="form__title">
+                            Restore your password
+                        </div>
+
+                        <div class="form-content">
+                            <div class="input-wrapper">
+                                <input type="email" class="input" placeholder="Enter your email" required>
+                            </div>
+                            <button class="btn" type="submit">
+                                Send
+                            </button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+
+            <!-- Modal Form Registration -->
+            <div id="register" class="modal">
+                <div class="modal-content">
+                    <form action="" class="form form-multirow">
+                        <div class="form__title">
+                            Registration form
+                        </div>
+                        <div class="form-content">
+                            <div class="input-wrapper input-wrapper-half">
+                                <input type="text" name="name" id="user-name" class="input" required placeholder="Enter your first name">
+                            </div>
+                            <div class="input-wrapper input-wrapper-half">
+                                <input type="text" name="surename" id="user-surename" class="input" required placeholder="Enter your second name">
+                            </div>
+                            <div class="input-wrapper">
+                                <input type="email" class="input" placeholder="Enter your email">
+                            </div>
+                            <div class="input-wrapper">
+                                <input type="tel" class="input" placeholder="Enter your phone">
+                            </div>
+                            <div class="input-wrapper">
+                                <input type="password" class="input" placeholder="Enter your password">
+                            </div>
+                            <div class="input-wrapper">
+                                <input type="password" class="input" placeholder="Repeat your password">
+                            </div>
+                           
+                            <button class="btn" type="submit">
+                                Register
+                            </button>
+        
+                        </div>
+                        
+        
+                        <p class="form-info">
+                            <a href="">
+                                You already have an account?
+                                <span class="icon icon-circle-right"></span>
+                            </a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+           
+        </main>
+    
+        <footer class="footer"></footer>
+    
+    </div>
+    
+    <script src="js/main.min.js"></script>
+    <script src="js/jquery-fancybox.js"></script>
+</body>
+</html>
